@@ -834,7 +834,6 @@ public class Game extends JPanel implements Runnable, KeyListener {
         else if (isJumping) {
             offScreenBuffer.drawImage(player.jump()[d][animationTick / 3 % player.jump()[d].length], 
             coordToWindow(xCoord, 'x') - 34, coordToWindow(yCoord, 'y') + 64 - 90, 100, 90, this);
-            animationTick++;
 
             //  Stops animation
             if (animationTick >= 33) {
@@ -846,7 +845,6 @@ public class Game extends JPanel implements Runnable, KeyListener {
         else if (isDoubleJumping) {
             offScreenBuffer.drawImage(player.doubleJump()[d][animationTick / 3 % player.doubleJump()[d].length], 
             coordToWindow(xCoord, 'x') - 34, coordToWindow(yCoord, 'y') + 64 - 90, 100, 90, this);
-            animationTick++;
 
             //  Stops animation
             if (animationTick >= 33) {
@@ -858,7 +856,6 @@ public class Game extends JPanel implements Runnable, KeyListener {
         else if (isAirborne) {
             offScreenBuffer.drawImage(player.fall()[d][animationTick / 5 % player.fall()[d].length], 
             coordToWindow(xCoord, 'x') - 34, coordToWindow(yCoord, 'y') + 64 - 90, 100, 90, this);
-            animationTick++;
 
             //  Repeats animation
             animationTick %= 35;
@@ -1114,6 +1111,9 @@ public class Game extends JPanel implements Runnable, KeyListener {
 
         while (true) {
             tick++;
+	    if (tick % 3 == 0)
+      		animationTick++;
+		
             if (!isPaused) {
                 update();
                 move();
