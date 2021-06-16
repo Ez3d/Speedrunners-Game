@@ -28,10 +28,10 @@ public class Driver extends JPanel implements KeyListener {
     //  JComponents
     static JFrame frame;
     static Game gamePanel;
-    static JPanel menuPanel, mapPanel, optionPanel, highscorePanel;
+    static JPanel menuPanel, mapPanel, optionPanel, highscorePanel, helpPanel;
 
-    static JJButton back1, back2, back3;
-    static JJButton play, options, highscores, quit;
+    static JJButton back1, back2, back3, back4;
+    static JJButton play, options, highscores, help, quit;
     static JSlider musicVolume, fxVolume;
     static float musicAdjust = 0, fxAdjust = 0;
 
@@ -39,7 +39,6 @@ public class Driver extends JPanel implements KeyListener {
     static final int WINDOW_WIDTH = 1440;
     static final int WINDOW_HEIGHT = 768;
     static int currentScreen = 0;
-    static int prevScreen = 0;
 
     //  Map selection
     static ArrayList<Map> maps = new ArrayList<Map>();
@@ -51,7 +50,7 @@ public class Driver extends JPanel implements KeyListener {
     static JTextArea scoreList;
 
     //  Images
-    static BufferedImage menuImage, optionImage, mapImage, highscoreImage;
+    static BufferedImage menuImage, optionImage, mapImage, highscoreImage, helpImage;
     static Image fx, music;
 
     //  Sounds
@@ -86,22 +85,27 @@ public class Driver extends JPanel implements KeyListener {
         //  Switches to map panel
         play = new JJButton("PLAY", 3);
         play.setHorizontalAlignment(SwingConstants.LEFT);
-        play.setBounds(100, 200, 300, 75);
+        play.setBounds(100, 150, 350, 75);
 
         //  Switches to highscore panel
         highscores = new JJButton("HIGHSCORES", 4);
         highscores.setHorizontalAlignment(SwingConstants.LEFT);
-        highscores.setBounds(100, 300, 250, 75);
+        highscores.setBounds(100, 250, 300, 75);
 
         //  Switches to option panel
         options = new JJButton("OPTIONS", 2);
         options.setHorizontalAlignment(SwingConstants.LEFT);
-        options.setBounds(100, 400, 200, 75);
+        options.setBounds(100, 350, 250, 75);
+
+        //  Switches to help panel
+        help = new JJButton("HELP", 5);
+        help.setHorizontalAlignment(SwingConstants.LEFT);
+        help.setBounds(100, 450, 200, 75);
 
         //  Exits program
         quit = new JJButton("QUIT");
         quit.setHorizontalAlignment(SwingConstants.LEFT);
-        quit.setBounds(100, 500, 150, 75);
+        quit.setBounds(100, 550, 150, 75);
         quit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
@@ -110,6 +114,7 @@ public class Driver extends JPanel implements KeyListener {
 
         menuPanel.add(play);
         menuPanel.add(highscores);
+        menuPanel.add(help);
         menuPanel.add(options);
         menuPanel.add(quit);
 
@@ -287,6 +292,15 @@ public class Driver extends JPanel implements KeyListener {
         highscorePanel.add(score3);
         highscorePanel.add(scoreList);
         highscorePanel.add(back3);
+
+        //  Help panel   -------------------------------------------------------------------------------------------
+        helpPanel = new Driver();
+
+        //  Switches back to main menu
+        back4 = new JJButton("BACK", 0);
+        back4.setBounds((WINDOW_WIDTH - 150) / 2, WINDOW_HEIGHT / 2 + 225, 150, 50);
+
+        helpPanel.add(back4);
     }
 
     //  Reads images from file and stores them
@@ -294,10 +308,11 @@ public class Driver extends JPanel implements KeyListener {
     //  Parameters: No parameters
     public static void loadImages() {
         try {
-            menuImage = ImageIO.read(new File("images/menuImage.png"));
+            menuImage = ImageIO.read(new File("images/menuImageScaled.png"));
             optionImage = ImageIO.read(new File("images/optionImage.png"));
             mapImage = ImageIO.read(new File("images/mapImage.png"));
             highscoreImage = ImageIO.read(new File("images/highscoreImage.png"));
+            helpImage = ImageIO.read(new File("images/helpImageScaled.png"));
             music = Toolkit.getDefaultToolkit().getImage("images/music.png");
             fx = Toolkit.getDefaultToolkit().getImage("images/fx.png");
         }
@@ -330,6 +345,7 @@ public class Driver extends JPanel implements KeyListener {
     //  2 = Options
     //  3 = Map select
     //  4 = Highscore display
+    //  5 = Help
     //  Return type: Changes global variables (void)
     //  Parameters: Screen to change to (int)
     public static void changeScreen(int i) {
@@ -340,8 +356,8 @@ public class Driver extends JPanel implements KeyListener {
         frame.remove(optionPanel);
         frame.remove(mapPanel);
         frame.remove(highscorePanel);
+        frame.remove(helpPanel);
 
-        prevScreen = currentScreen;
         currentScreen = i;
         Game.isPaused = true;
 
@@ -369,10 +385,17 @@ public class Driver extends JPanel implements KeyListener {
         else if (i == 3) {
             frame.add(mapPanel);
             mapPanel.requestFocus();
+
+            // //  Plays music
+            // menuMusic.loop(Clip.LOOP_CONTINUOUSLY);
         }
         else if (i == 4) {
             frame.add(highscorePanel);
             highscorePanel.requestFocus();
+        }
+        else if (i == 5) {
+            frame.add(helpPanel);
+            helpPanel.requestFocus();
         }
 
         frame.revalidate();
@@ -384,7 +407,7 @@ public class Driver extends JPanel implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_ESCAPE) {
-            if (currentScreen == 2 || currentScreen == 3 || currentScreen == 4)
+            if (currentScreen == 2 || currentScreen == 3 || currentScreen == 4 || currentScreen == 5)
                 changeScreen(0);
         }
     }
@@ -400,20 +423,22 @@ public class Driver extends JPanel implements KeyListener {
     //  Parameters: Graphics variable
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         g.setColor(new Color(254, 54, 180));
 
         //  Main menu
         if (currentScreen == 0) {
-            g.drawImage(menuImage, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
+            g.drawImage(menuImage, 0, 0, WINDOW_WIDTH - 16, WINDOW_HEIGHT - 39, this);
 
-            g.fillRect(110, 210, 300, 75);
-            g.fillRect(110, 310, 250, 75);
-            g.fillRect(110, 410, 200, 75);
-            g.fillRect(110, 510, 150, 75);
+            g.fillRect(110, 160, 350, 75);
+            g.fillRect(110, 260, 300, 75);
+            g.fillRect(110, 360, 250, 75);
+            g.fillRect(110, 460, 200, 75);
+            g.fillRect(110, 560, 150, 75);
         }
         //  Options menu
         else if (currentScreen == 2) {
-            g.drawImage(optionImage, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
+            g.drawImage(optionImage, 0, 0, WINDOW_WIDTH - 16, WINDOW_HEIGHT - 39, this);
             g.drawImage(music, WINDOW_WIDTH / 2 + 165, WINDOW_HEIGHT / 2 - 65, 50, 50, this);
             g.drawImage(fx, WINDOW_WIDTH / 2 + 160, WINDOW_HEIGHT / 2 + 34, 60, 60, this);
 
@@ -423,7 +448,7 @@ public class Driver extends JPanel implements KeyListener {
         }
         //  Map selection
         else if (currentScreen == 3) {
-            g.drawImage(mapImage, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
+            g.drawImage(mapImage, 0, 0, WINDOW_WIDTH - 16, WINDOW_HEIGHT - 39, this);
 
             g.fillRect(330, 360, 200, 200);
             g.fillRect(630, 360, 200, 200);
@@ -432,12 +457,16 @@ public class Driver extends JPanel implements KeyListener {
         }
         //  Highscore display
         else if (currentScreen == 4) {
-            g.drawImage(highscoreImage, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, this);
+            g.drawImage(highscoreImage, 0, 0, WINDOW_WIDTH - 16, WINDOW_HEIGHT - 39, this);
 
             g.fillRect(130, 360, 200, 200);
             g.fillRect(430, 360, 200, 200);
             g.fillRect(730, 360, 200, 200);
             g.fillRect((WINDOW_WIDTH - 150) / 2 + 10, WINDOW_HEIGHT / 2 + 235, 150, 50);
+        }
+        //  Help display
+        else if (currentScreen == 5) {
+            g.drawImage(helpImage, 0, 0, WINDOW_WIDTH - 16, WINDOW_HEIGHT - 39, this);
         }
     }
     
