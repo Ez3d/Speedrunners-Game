@@ -1,7 +1,5 @@
 SPEEDRUNNERS
-ICS 4U1 Final Project Game
 Edward Zhou
-Ms. Wong
 2021-01-27
 
 HOW TO PLAY:
