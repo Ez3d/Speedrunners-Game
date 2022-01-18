@@ -29,29 +29,6 @@ ADDITIONAL NOTES:
         (in a race against time you don't need to hang from your hook)
     - Pressing ESCAPE pauses the game or is a substitute for back in the menus
 
-CHANGES FROM PROPOSAL:
-    - No distinct characters (and thus no character selection screen):
-        I have never played the game this is based off of, so I originally thought different characters had different abilities,
-        but the different characters are only there for aesthetics. Given the already abundant methods of movement 
-        (grapple, wall jump, double jump, boost pads, etc.), more characters were not necessary
-
-    - Limited powerups/special tiles
-        The original game is naturally a multiplayer game, so many of the gadgets they use are tailored towards multiplayer
-        (eg. freeze rays, homing rockets, stun bombs). I got excited and put a lot more than a single player racer needed on my
-        proposal. The single-player friendly specials I did add were speed boosts and jump pads.
-
-    - No mouse input for hooks:
-        Hooks are controlled by keyboard, fired at a 45 degree angle in the direction the player is facing. Although I could have
-        just as easily used mouse hooks, this would have made grappling hooks too easy to use and not rewarding.
-
-    - Some parts took a lot longer to develop than I expected (even if I expected it to be difficult). These include:
-        - Multiple methods for grappling hook physics
-        - Multiple methods for collision detection (wonky because my movement includes acceleration)
-        - Ramp movement (something I hadn't considered in my initial proposal)
-        - Animation
-
-    - I mentioned that I would add two-player if I had time. There was no time.
-
 KNOWN BUGS/ISSUES:
     - When colliding with a ramp while grappling in a very specific way, an error occurs and the player is teleported to 
         the corner of the map. This is a very rare case and there wasn't a clear solution, so I left it.
