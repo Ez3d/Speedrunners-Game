@@ -17,11 +17,8 @@ WHAT'S THE GOAL?
 THE CHARACTER CAN:
 
     - Double jump (jump an additional time while in the air)
-    
     - Wall jump (jump an additional time when colliding with a wall, as if vaulting off it)
-    
     - Shoot their grappling hook at a 45 degree angle in the direction they are facing
-    
     - Show off the cool animations I spent too much time making
 
 
@@ -29,6 +26,7 @@ THE CHARACTER CAN:
 
 
 ADDITIONAL NOTES:
+
     - Speed boost pads don't launch the player--they increase max velocity for a limited time. The direction the point is purely
         aesthetic
     - Solid white surfaces are hookable surfaces. Dashed white walls are climable walls
@@ -39,6 +37,7 @@ ADDITIONAL NOTES:
     - Pressing ESCAPE pauses the game or is a substitute for back in the menus
 
 KNOWN BUGS/ISSUES:
+
     - When colliding with a ramp while grappling in a very specific way, an error occurs and the player is teleported to 
         the corner of the map. This is a very rare case and there wasn't a clear solution, so I left it.
     - At times, the player's hitbox does not line up well with the player model. This may make it seem like the player is
