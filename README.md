@@ -2,11 +2,12 @@ SPEEDRUNNERS
 Edward Zhou
 2021-01-27
 
+![image](https://user-images.githubusercontent.com/73318619/151687229-cac9bf8a-def1-4201-b3c8-d7976ed85177.png)
+
+
 HOW TO PLAY:
-    A - move left
-    D - move right
-    W - jump
-    G - grappling hook
+![helpImage](https://user-images.githubusercontent.com/73318619/151687137-ae8b3ce0-bc25-4e0d-ac41-12bba1476867.png)
+
 
 WHAT'S THE GOAL?
     You are a speedrunner/parkourist/runner/racer, and you want to complete a lap (or however many laps you like) 
@@ -18,6 +19,9 @@ THE CHARACTER CAN:
     - Wall jump (jump an additional time when colliding with a wall, as if vaulting off it)
     - Shoot their grappling hook at a 45 degree angle in the direction they are facing
     - Show off the cool animations I spent too much time making
+    
+![image](https://user-images.githubusercontent.com/73318619/151687252-2e5bce85-bd5b-4789-956e-82cb2123c68f.png)
+
 
 ADDITIONAL NOTES:
     - Speed boost pads don't launch the player--they increase max velocity for a limited time. The direction the point is purely
