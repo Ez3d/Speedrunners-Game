@@ -19,7 +19,8 @@ THE CHARACTER CAN:
     - Wall jump (jump an additional time when colliding with a wall, as if vaulting off it)
     - Shoot their grappling hook at a 45 degree angle in the direction they are facing
     - Show off the cool animations I spent too much time making
-    
+
+
 ![image](https://user-images.githubusercontent.com/73318619/151687252-2e5bce85-bd5b-4789-956e-82cb2123c68f.png)
 
 
