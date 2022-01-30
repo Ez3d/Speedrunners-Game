@@ -36,7 +36,6 @@ ADDITIONAL NOTES:
 KNOWN BUGS/ISSUES:
     - When colliding with a ramp while grappling in a very specific way, an error occurs and the player is teleported to 
         the corner of the map. This is a very rare case and there wasn't a clear solution, so I left it.
-
     - At times, the player's hitbox does not line up well with the player model. This may make it seem like the player is
         partially in a wall, but it doesn't affect gameplay and is purely a visual thing. It also only happens rarely for very
         short frames (i.e. the peak of a grappling hook movement)
