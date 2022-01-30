@@ -15,9 +15,13 @@ WHAT'S THE GOAL?
     The timer starts when you are loaded into the map. Finish the race and record your time by touching the checkered flag.
 
 THE CHARACTER CAN:
+
     - Double jump (jump an additional time while in the air)
+    
     - Wall jump (jump an additional time when colliding with a wall, as if vaulting off it)
+    
     - Shoot their grappling hook at a 45 degree angle in the direction they are facing
+    
     - Show off the cool animations I spent too much time making
 
 
