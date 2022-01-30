@@ -6,7 +6,6 @@ Edward Zhou
 ![image](https://user-images.githubusercontent.com/73318619/151687229-cac9bf8a-def1-4201-b3c8-d7976ed85177.png)
 
 
-HOW TO PLAY:
 ![helpImage](https://user-images.githubusercontent.com/73318619/151687137-ae8b3ce0-bc25-4e0d-ac41-12bba1476867.png)
 
 
